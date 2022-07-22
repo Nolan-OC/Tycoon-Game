@@ -84,8 +84,10 @@ public class DragDrop : MonoBehaviour
         else
             Debug.LogError("ERROR RAY CAST HIT INVALID TARGET, NOT CUSTOMER OR EMPLOYEE");
 
+
         //TODO need to have list of valid locations, if you move employee to break room for instance
         //currently just adding else ifs to check which location you dropped them on
+        //TODO swap employees between stations for quality of life
         if (Physics.Raycast(ray, out hit))
         {
             //Trying to drop on battlePosition
@@ -112,8 +114,12 @@ public class DragDrop : MonoBehaviour
             //Trying to drop on reception pos
             else if(hit.collider.TryGetComponent(out ReceptionPos receptionPos))
             {
-                if (isCustomer) //no customer has business at reception
+                if (isCustomer || receptionPos.isFull) //return if using customer or pos is full
+                {
+                    InvalidDropLocation(clickedObject);
                     return;
+                }
+
                 clickedObject.GetComponent<Navigation>().SetDestination(receptionPos);
                 receptionPos.UpdatePos(clickedObject);
             }

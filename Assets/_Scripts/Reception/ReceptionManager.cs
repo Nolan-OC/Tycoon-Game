@@ -5,7 +5,7 @@ using UnityEngine;
 public class ReceptionManager : MonoBehaviour
 {
     [Header("Receptionist")]
-    public ReceptionPos receptionistPos;
+    [SerializeField]private ReceptionPos rPos;
 
     [Header("Queue Info")]
     public List<QueuePos> queuePositions;
