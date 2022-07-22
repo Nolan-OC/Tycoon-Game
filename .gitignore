@@ -361,3 +361,16 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Assets/_Scripts/Input/Player.inputactions
+/Assets/TextMesh Pro
+/Assets/External/Epic Toon FX
+/Assets/Prefab
+/Assets/Scenes
+/Assets/Red.mat
+/Assets/Green.mat
+/Assets/Blue.mat
+/Library
+/ProjectSettings
+/Temp
+/UserSettings
+/Assembly-CSharp.csproj

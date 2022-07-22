@@ -16,6 +16,7 @@ public class ReceptionManager : MonoBehaviour
     public Transform customerSpawnLocation;
     private void Start()
     {
+        StartCoroutine(MoveQueueTimer());
         NewCustomer();
         NewCustomer();
         NewCustomer();
@@ -26,9 +27,24 @@ public class ReceptionManager : MonoBehaviour
     {
         
     }
+    private IEnumerator MoveQueueTimer()
+    {
+        while (true)
+        {
+            //TODO timer currently independent of receptionist, should maybe restart timer when he moves from rPos
+            yield return new WaitForSecondsRealtime(5);
+
+            //if there is a current receptionist...
+            if (rPos.isFull)
+            {
+                //check if customer can move on based on reception skill
+                //check how much of customer stats are revealed to player based on reception skill
+                MoveQueue();
+            }
+        }
+    }
     public void MoveQueue()
     {
-        //TODO check if receptionist exists
         if (queuePositions[0].isFull && HasWaitingSpace())  //Move customer0 to waiting room
         {
             //TODO Receptionist checks customer stats
