@@ -41,13 +41,15 @@ public class BattleManager : MonoBehaviour
         if(customer!=null && employee != null)
         {
             Debug.Log("Battle has begun at counter" + gameObject.name);
-            currentState = State.employeeTurn;
+            //Customer stops being draggable when battle begins until they leave
+            customer.GetComponent<NPCStates>().state = NPCStates.NPCState.notDraggable;
             StartCoroutine(EmployeeTurn());
         }
     }
 
     IEnumerator EmployeeTurn()
     {
+        currentState = State.employeeTurn;
         yield return new WaitForSeconds(2f);
         //check if should take break
         //determine attack or blunder
@@ -81,6 +83,7 @@ public class BattleManager : MonoBehaviour
     }
     IEnumerator CustomerTurn()
     {
+        currentState = State.customerTurn;
         yield return new WaitForSeconds(2f);
         //determine attack or blunder
         float hitRoll = Random.Range(0, 100);
