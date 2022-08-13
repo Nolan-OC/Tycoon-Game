@@ -113,6 +113,10 @@ public class BattleManager : MonoBehaviour
             //TODO change state back to idle at some point
         }
     }
+    private void PauseBattle()
+    {
+        //TODO Pause battle when dragging npc to heal in break room or any other reason like swapping employees
+    }
     private DamageType CalculateOptimalAttack(NPC_Combat attacker, NPC_Combat defender)
     {
         DamageType optimalType = DamageType.aggro;

@@ -132,7 +132,7 @@ public class DragDrop : MonoBehaviour
                     return;
                 }
                 clickedObject.GetComponent<Navigation>().SetDestination(breakPos);
-                receptionPos.UpdatePos(clickedObject);
+                breakPos.UpdatePos(clickedObject);
             }
             //Trying to drop anywhere not already defined
             else

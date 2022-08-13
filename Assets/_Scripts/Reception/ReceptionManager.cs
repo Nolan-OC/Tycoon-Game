@@ -68,7 +68,7 @@ public class ReceptionManager : MonoBehaviour
                 newPosition.UpdatePos(oldPosition.currentNPC);  //update new position with customer
                 oldPosition.currentNPC.GetComponent<Navigation>().SetDestination(newPosition);   //nav to new position
 
-                oldPosition.ClearPos();   //clear previous position
+                oldPosition.ClearPos(oldPosition.currentNPC);   //clear previous position
             }
         }
     }

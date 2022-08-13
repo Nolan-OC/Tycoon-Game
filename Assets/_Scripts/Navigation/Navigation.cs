@@ -21,9 +21,10 @@ public class Navigation : MonoBehaviour
         else
         {
             Debug.Log("Valid New Destination Set");
+            //TODO need to remove npcs from list for healing. Maybe just do a cubecast up to detect npcs instead
             agent.SetDestination(destinationPos.transform.position);
             if (lastLocation != null)
-                lastLocation.ClearPos();
+                lastLocation.ClearPos(this.gameObject);
             lastLocation = destinationPos;
         }
     }

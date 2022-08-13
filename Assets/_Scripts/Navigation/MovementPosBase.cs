@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.InteropServices;
 
 public class MovementPosBase : MonoBehaviour
 {
     public bool isFull = false;
     public GameObject currentNPC;
-    public void ClearPos()
+    virtual public void ClearPos(GameObject npc)
     {
         isFull = false;
         currentNPC = null;

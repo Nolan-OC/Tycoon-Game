@@ -16,8 +16,19 @@ public class NPC_Combat : MonoBehaviour
 
     [Tooltip("Accuracy out of 100, determines a hit or a blunder")]
     [Range(0,100)]public float accuracy;  //accuracy out of 100, determines blunder or hit
+
+    private HealthBar healthBar;
+
+    private void Start()
+    {
+        if (transform.Find("GUI/HealthBar").gameObject.TryGetComponent(out HealthBar health))
+            healthBar = health;
+        else
+            Debug.LogError("Could not find health bar for " + name);
+    }
     public void TakeDamage(float damage)
     {
         patience -= damage;
+        healthBar.SetSize(patience/maxPatience);
     }
 }
