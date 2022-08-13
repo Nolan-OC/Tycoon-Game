@@ -6,6 +6,6 @@ public class ClickNPC : ClickableBase
 {
     public override void Clicked()
     {
-        Debug.Log("Clicked NPC");
+        Debug.Log("Clicked "+ name);
     }
 }

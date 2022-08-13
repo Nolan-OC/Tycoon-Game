@@ -15,6 +15,8 @@ public class DragDrop : MonoBehaviour
     [SerializeField]
     private Vector3 velocity = Vector3.zero;
 
+
+    //TODO do not drag drop if a simple click performed
     private Camera mainCamera;
     private void Awake()
     {
@@ -112,7 +114,7 @@ public class DragDrop : MonoBehaviour
                 }
             }
             //Trying to drop on reception pos
-            else if(hit.collider.TryGetComponent(out ReceptionPos receptionPos))
+            else if(hit.collider.TryGetComponent(out WaitingRoomPos receptionPos))
             {
                 if (isCustomer || receptionPos.isFull) //return if using customer or pos is full
                 {
@@ -124,7 +126,7 @@ public class DragDrop : MonoBehaviour
                 receptionPos.UpdatePos(clickedObject);
             }
             //Trying to drop on breakroom pos
-            else if(hit.collider.TryGetComponent(out BreakRoomPos breakPos))
+            else if(hit.collider.TryGetComponent(out BreakRoomPosManager breakPos))
             {
                 if(isCustomer || breakPos.isFull)
                 {

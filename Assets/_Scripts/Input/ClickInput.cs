@@ -35,8 +35,7 @@ public class ClickInput : ClickableBase
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit))
         {
-            Debug.Log(hit.collider.gameObject);
-            if(hit.collider.TryGetComponent(out ClickableBase clickable)) //something both customers and employees share
+            if(hit.collider.TryGetComponent(out ClickableBase clickable)) //base class for clickable things
             {
                 clickable.Clicked();
             }
