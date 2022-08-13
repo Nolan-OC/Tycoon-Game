@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreakRoomPos : MovementPosBase
+public class BreakRoomPosManager : MovementPosBase
 {
     public List<GameObject> employees;
-    public int roomMaxCount;
+    public List<GameObject> positions;
+
     //public int roomCount; roomcount is the employees count
     //isFull comes from movePosBase, and is never set to full so that this pos can hold multiple people
-    //TODO delete customers as they arrive
     //TODO navigate customers to positions in the break room not just to the center
+    //TODO move coroutine, roomMax count and a list of Pos' to a break room manager class, Pos should only hold gameobject
     public void Start()
     {
+        positions = transform.Getchil
         StartCoroutine(HealingNPCs());
     }
     public void UpdatePos(GameObject newNPC)

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ReceptionManager : MonoBehaviour
 {
     [Header("Receptionist")]
-    [SerializeField]private ReceptionPos rPos;
+    [SerializeField]private WaitingRoomPos rPos;
 
     [Header("Queue Info")]
     public List<QueuePos> queuePositions;
@@ -14,6 +14,10 @@ public class ReceptionManager : MonoBehaviour
     [Header ("Customer Creation")]
     public GameObject pCustomer;
     public Transform customerSpawnLocation;
+    //TODO waiting room layout currently set manually, however I want to have upgrades to the waiting room which
+    //would include more chairs, different layouts. Need to build a system that will allow for different layouts
+    //and set them accordingly. Probably read the parent of all waiting positions and save different but disabled
+    //parents with new layouts/more chairs. Then just activate/deactivate on upgrades.
     private void Start()
     {
         StartCoroutine(MoveQueueTimer());
