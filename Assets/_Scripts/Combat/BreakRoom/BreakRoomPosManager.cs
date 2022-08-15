@@ -13,7 +13,7 @@ public class BreakRoomPosManager : MovementPosBase
     //TODO move coroutine, roomMax count and a list of Pos' to a break room manager class, Pos should only hold gameobject
     public void Start()
     {
-        positions = transform.Getchil
+        //Set position by child object gameobject positions = transform.
         StartCoroutine(HealingNPCs());
     }
     public void UpdatePos(GameObject newNPC)
