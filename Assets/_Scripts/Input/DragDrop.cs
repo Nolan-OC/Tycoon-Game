@@ -38,6 +38,7 @@ public class DragDrop : MonoBehaviour
 
     private void MousePressed(InputAction.CallbackContext context)
     {
+        //Move to a long press on ClickInput.cs
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit))

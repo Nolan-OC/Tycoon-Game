@@ -31,6 +31,7 @@ public class ClickInput : ClickableBase
 
     private void MousePressed(InputAction.CallbackContext context)
     {
+        //TODO make this a short press
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit))
