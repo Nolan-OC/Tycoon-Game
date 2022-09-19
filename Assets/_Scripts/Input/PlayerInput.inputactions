@@ -1,0 +1,54 @@
+{
+    "name": "PlayerInput",
+    "maps": [
+        {
+            "name": "Input",
+            "id": "53a51213-e434-4af5-a574-3521c5737f61",
+            "actions": [
+                {
+                    "name": "Tap",
+                    "type": "Button",
+                    "id": "abd26583-9e36-481a-b753-5303ffe067f8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Tap&Hold",
+                    "type": "Value",
+                    "id": "b147f896-cdff-4e6b-8583-1dc6766b533d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "51e714bd-b390-460d-b936-dbc5dcd8e0c0",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "249c301c-dcdc-449d-9fa8-fdbc1cd74de6",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap&Hold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

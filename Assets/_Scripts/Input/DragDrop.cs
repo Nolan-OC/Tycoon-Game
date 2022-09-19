@@ -7,36 +7,32 @@ using UnityEngine.AI;
 public class DragDrop : MonoBehaviour
 {
     [SerializeField]
-    private PlayerInput playerInput;
-    [SerializeField]
-    private InputAction mouseClick;
+    private InputAction holdInput;
     [SerializeField]
     private float mouseDragSpeed = .1f;
     [SerializeField]
     private Vector3 velocity = Vector3.zero;
 
-
-    //TODO do not drag drop if a simple click performed
     private Camera mainCamera;
     private void Awake()
     {
         mainCamera = Camera.main;
-        //mouseClick = playerInput.actions
+        //tapInput = playerInput.actions
         //want to auto grab actions from input action already defined
     }
 
     private void OnEnable()
     {
-        mouseClick.Enable();
-        mouseClick.performed += MousePressed;
+        holdInput.Enable();
+        holdInput.performed += HoldInputDetected;
     }
     private void OnDisable()
     {
-        mouseClick.performed -= MousePressed;
-        mouseClick.Disable();
+        holdInput.performed -= HoldInputDetected;
+        holdInput.Disable();
     }
 
-    private void MousePressed(InputAction.CallbackContext context)
+    private void HoldInputDetected(InputAction.CallbackContext context)
     {
         //Move to a long press on ClickInput.cs
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -59,7 +55,7 @@ public class DragDrop : MonoBehaviour
         //disable navmesh to allow object to float
         clickedObject.GetComponent<NavMeshAgent>().enabled = false;
 
-        while (mouseClick.ReadValue<float>() != 0)
+        while (holdInput.ReadValue<float>() != 0)
         {
             Vector3 collisionPos = RayCollisionPos();
             Debug.DrawRay(mainCamera.transform.position, collisionPos - mainCamera.transform.position, Color.red);

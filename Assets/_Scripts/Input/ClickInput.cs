@@ -6,27 +6,26 @@ using UnityEngine.InputSystem;
 public class ClickInput : ClickableBase
 {
     [SerializeField]
-    private PlayerInput playerInput;
-    [SerializeField]
-    private InputAction mouseClick;
+    private InputAction tapInput;
 
     private Camera mainCamera;
     private void Awake()
     {
         mainCamera = Camera.main;
-        //mouseClick = playerInput.actions
+        //tapInput = playerInput.actions
         //want to auto grab actions from input action already defined
+        
     }
 
     private void OnEnable()
     {
-        mouseClick.Enable();
-        mouseClick.performed += MousePressed;
+        tapInput.Enable();
+        tapInput.performed += MousePressed;
     }
     private void OnDisable()
     {
-        mouseClick.performed -= MousePressed;
-        mouseClick.Disable();
+        tapInput.performed -= MousePressed;
+        tapInput.Disable();
     }
 
     private void MousePressed(InputAction.CallbackContext context)
