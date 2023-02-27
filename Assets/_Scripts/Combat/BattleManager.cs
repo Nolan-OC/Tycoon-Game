@@ -29,6 +29,7 @@ public class BattleManager : MonoBehaviour
     private BattlePos EPos, CPos;
     public MovementPosBase customerExitPos;
     
+    //TODO QOL make so you can drop any npc anywhere on gameobject and it will properly place them
     public void Start()
     {
         StartBattle();

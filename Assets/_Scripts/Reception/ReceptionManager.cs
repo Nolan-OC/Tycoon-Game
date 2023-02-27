@@ -107,6 +107,7 @@ public class ReceptionManager : MonoBehaviour
             newCustomer.GetComponent<Navigation>().SetDestination(emptySpace);
             emptySpace.isFull = true;
             emptySpace.currentNPC = newCustomer;
+
         }
         else
             Debug.Log("Queue full");

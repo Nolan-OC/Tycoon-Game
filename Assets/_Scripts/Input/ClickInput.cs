@@ -39,6 +39,10 @@ public class ClickInput : ClickableBase
             {
                 clickable.Clicked();
             }
+            else
+            {
+                //building card dissappear
+            }
         }
     }
 

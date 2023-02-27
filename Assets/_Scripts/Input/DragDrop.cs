@@ -34,7 +34,7 @@ public class DragDrop : MonoBehaviour
 
     private void HoldInputDetected(InputAction.CallbackContext context)
     {
-        //Move to a long press on ClickInput.cs
+        //TODO grab clicked object at ClickInput so raycast isn't cast .5 seconds after click when drag detected
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
         RaycastHit hit;
         if(Physics.Raycast(ray, out hit))
