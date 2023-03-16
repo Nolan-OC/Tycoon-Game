@@ -4,9 +4,5 @@ using UnityEngine;
 
 public class QueuePos : MovementPosBase
 {
-    public void UpdatePos(GameObject newCustomer)
-    {
-        currentNPC = newCustomer;
-        isFull = true;
-    }
+
 }

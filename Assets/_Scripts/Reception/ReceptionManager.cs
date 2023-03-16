@@ -22,10 +22,6 @@ public class ReceptionManager : MonoBehaviour
     {
         StartCoroutine(MoveQueueTimer());
         NewCustomer();
-        NewCustomer();
-        NewCustomer();
-        NewCustomer();
-        NewCustomer();
     }
     private void Update()
     {
@@ -68,7 +64,7 @@ public class ReceptionManager : MonoBehaviour
                     Debug.Log("Queue is full but move was called");
                     return;
                 }
-
+                Debug.Log("update pos called");
                 newPosition.UpdatePos(oldPosition.currentNPC);  //update new position with customer
                 oldPosition.currentNPC.GetComponent<Navigation>().SetDestination(newPosition);   //nav to new position
 
@@ -105,8 +101,7 @@ public class ReceptionManager : MonoBehaviour
 
             //nav to queue position
             newCustomer.GetComponent<Navigation>().SetDestination(emptySpace);
-            emptySpace.isFull = true;
-            emptySpace.currentNPC = newCustomer;
+            emptySpace.UpdatePos(newCustomer);
 
         }
         else

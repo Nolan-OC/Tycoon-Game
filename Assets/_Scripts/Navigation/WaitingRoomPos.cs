@@ -11,9 +11,5 @@ public class WaitingRoomPos : MovementPosBase
     {
         parentManager = transform.parent.GetComponent<ReceptionManager>();
     }
-    public void UpdatePos(GameObject newNPC)
-    {
-        currentNPC = newNPC;
-        isFull = true;
-    }
+
 }

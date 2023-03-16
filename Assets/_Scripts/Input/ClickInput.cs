@@ -14,7 +14,6 @@ public class ClickInput : ClickableBase
         mainCamera = Camera.main;
         //tapInput = playerInput.actions
         //want to auto grab actions from input action already defined
-        
     }
 
     private void OnEnable()

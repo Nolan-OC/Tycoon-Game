@@ -83,60 +83,13 @@ public class DragDrop : MonoBehaviour
         else
             Debug.LogError("ERROR RAY CAST HIT INVALID TARGET, NOT CUSTOMER OR EMPLOYEE");
 
-        //TODO need to have list of valid locations, if you move employee to break room for instance
-        //currently just adding else ifs to check which location you dropped them on
         //TODO swap employees between stations for quality of life
         //TODO Consider breaking up into two functions, one for customer and one for employees?
         if (Physics.Raycast(ray, out hit))
         {
-            //Trying to drop on battlePosition
-            if (hit.collider.TryGetComponent(out BattlePos battlePos))
+            if (hit.collider.TryGetComponent(out Dropable drop))
             {
-                if (battlePos.isCustomerPos && isCustomer == true && !battlePos.isFull)
-                {
-                    //Dropped a customer on a valid battle location
-                    clickedObject.GetComponent<Navigation>().SetDestination(battlePos);
-                    battlePos.UpdatePos(clickedObject);
-                }
-                else if (battlePos.isCustomerPos == false && isCustomer == false && !battlePos.isFull)
-                {
-                    //Dropped an employee on a valid battle location
-                    clickedObject.GetComponent<Navigation>().SetDestination(battlePos);
-                    battlePos.UpdatePos(clickedObject);
-                }
-                else
-                {
-                    //Dropped someone on an invalid location
-                    InvalidDropLocation(clickedObject);
-                }
-            }
-            //Trying to drop on reception pos
-            else if(hit.collider.TryGetComponent(out WaitingRoomPos receptionPos))
-            {
-                if (isCustomer || receptionPos.isFull) //return if using customer or pos is full
-                {
-                    InvalidDropLocation(clickedObject);
-                    return;
-                }
-
-                clickedObject.GetComponent<Navigation>().SetDestination(receptionPos);
-                receptionPos.UpdatePos(clickedObject);
-            }
-            //Trying to drop on breakroom pos
-            else if(hit.collider.TryGetComponent(out BreakRoomPosManager breakPos))
-            {
-                if(isCustomer || breakPos.isFull)
-                {
-                    InvalidDropLocation(clickedObject);
-                    return;
-                }
-                clickedObject.GetComponent<Navigation>().SetDestination(breakPos);
-                breakPos.UpdatePos(clickedObject);
-            }
-            //Trying to drop anywhere not already defined
-            else
-            {
-                InvalidDropLocation(clickedObject);
+                drop.DropNPC(clickedObject, isCustomer);
             }
         }
     }

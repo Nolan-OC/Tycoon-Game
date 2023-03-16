@@ -9,6 +9,7 @@ public class NewApperance : MonoBehaviour
     void Start()
     {
         int randInt = Random.Range(0, skins.Count);
+        skins[0].SetActive(false); //TODO remove this for final build, wasteful. Only nice for debug to have a preset skinn
         skins[randInt].SetActive(true);
     }
 }

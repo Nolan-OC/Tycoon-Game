@@ -7,6 +7,7 @@ public class Navigation : MonoBehaviour
 {
     private NavMeshAgent agent;
     public MovementPosBase lastLocation;
+    public Animator animator;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -26,11 +27,28 @@ public class Navigation : MonoBehaviour
             if (lastLocation != null)
                 lastLocation.ClearPos(this.gameObject);
             lastLocation = destinationPos;
+
+            StartCoroutine(MovingToPos(destinationPos));
         }
     }
 
-    public void navState()
+    private IEnumerator MovingToPos(MovementPosBase destination)
     {
-        //TODO if customer set to undraggable while navigating?
+        // play walking animation
+        while (agent.pathPending || agent.remainingDistance > agent.stoppingDistance)
+        {
+            yield return new WaitForSeconds(0.2f);
+        }
+        yield return new WaitForSeconds(0.1f);
+        // face the objects forward pos
+
+        if (destination.npcFaceDir != null)
+        {
+            transform.LookAt(destination.npcFaceDir);
+            animator.Play(destination.npcAnimation);
+        }
+        else
+            Debug.Log("no npcFaceDir");
+        // play the objects animation (queue pos is a standing anim, waiting room sitting, combat will be standing, and overriden when taking damage)
     }
 }

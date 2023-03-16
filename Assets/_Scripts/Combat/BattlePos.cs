@@ -11,10 +11,14 @@ public class BattlePos : MovementPosBase
     {
         parentManager = transform.parent.GetComponent<BattleManager>();
     }
-    public void UpdatePos(GameObject newNPC)
+    public override void UpdatePos(GameObject newNPC)
     {
+        npcCount++;
         currentNPC = newNPC;
-        isFull = true;
+        if (npcCount == maxNPCCount)
+        {
+            isFull = true;
+        }
         //update battlemanager customer/employee battle will not start unless they are set
         if(currentNPC.TryGetComponent(out Employee employee))
         {
@@ -26,4 +30,6 @@ public class BattlePos : MovementPosBase
         }
         parentManager.StartBattle();
     }
+
+
 }

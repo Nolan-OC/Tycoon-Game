@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BuildingStats : MonoBehaviour
 {
-    public string name;
     public int level;
     public double upgCost;
 

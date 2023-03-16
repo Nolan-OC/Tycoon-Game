@@ -33,8 +33,6 @@ public class ClickableBuilding : ClickableBase
     {
         //buildingCard children MUST be in order of name,level,upgradeCost
         buildingCard.SetActive(true);
-        buildingCard.transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text=baseOfClicked.name;
-        buildingCard.transform.GetChild(1).gameObject.GetComponent<TMP_Text>().text= baseOfClicked.GetComponent<BuildingStats>().level.ToString();
-        buildingCard.transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text= "Cost: "+baseOfClicked.GetComponent<BuildingStats>().upgCost.ToString();
+        buildingCard.GetComponent<CardUI>().OpenCard(baseOfClicked);
     }
 }
