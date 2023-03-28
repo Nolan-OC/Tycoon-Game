@@ -60,7 +60,7 @@ public class BattleManager : MonoBehaviour
             //calculate optimal attack style, and damage
             DamageType optimalAttack = CalculateOptimalAttack(employee, customer);
             float optimalDamage = CalculateOptimalDamage(optimalAttack, employee, customer);
-            Debug.Log("EMPLOYEE OPTIMAL: Attacking with = " + optimalAttack);
+            //Debug.Log("EMPLOYEE OPTIMAL: Attacking with = " + optimalAttack);
             //send damageType and damage float to target NPC_COMBAT
             customer.TakeDamage(optimalDamage);
         }
@@ -69,7 +69,7 @@ public class BattleManager : MonoBehaviour
             //choose random attack
             int attackRoll = Random.Range(0, 2);
             float blunderDamage = CalculateOptimalDamage((DamageType)attackRoll,employee,customer);
-            Debug.Log("EMPLOYEE BLUNDER: Attacking with " + (DamageType)attackRoll);
+            //Debug.Log("EMPLOYEE BLUNDER: Attacking with " + (DamageType)attackRoll);
             customer.TakeDamage(blunderDamage);
         }
 
