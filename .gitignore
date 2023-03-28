@@ -376,3 +376,10 @@ FodyWeavers.xsd
 /Assembly-CSharp.csproj
 /Assets/WhitePixel.png
 /Assets/External/PolygonOffice
+/Assets/Animations
+/Assets/External/POLYGONCityCharacters/Materials
+/Assets/External/POLYGONCityCharacters/Models
+/Assets/External/POLYGONCityCharacters/Prefabs
+/Assets/External/POLYGONCityCharacters/Textures
+/Assets/External/POLYGONCityCharacters/Demo
+/.plastic
