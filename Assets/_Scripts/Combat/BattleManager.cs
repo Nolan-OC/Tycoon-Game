@@ -114,9 +114,11 @@ public class BattleManager : MonoBehaviour
             //TODO change state back to idle at some point
         }
     }
-    private void PauseBattle()
+    public void PauseBattle()
     {
         //TODO Pause battle when dragging npc to heal in break room or any other reason like swapping employees
+        StopAllCoroutines();
+        currentState = State.idle;
     }
     private DamageType CalculateOptimalAttack(NPC_Combat attacker, NPC_Combat defender)
     {

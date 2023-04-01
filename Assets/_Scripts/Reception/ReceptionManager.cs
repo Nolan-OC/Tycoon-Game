@@ -14,6 +14,7 @@ public class ReceptionManager : MonoBehaviour
     [Header ("Customer Creation")]
     public GameObject pCustomer;
     public Transform customerSpawnLocation;
+    public GameObject customerCard;
     //TODO waiting room layout currently set manually, however I want to have upgrades to the waiting room which
     //would include more chairs, different layouts. Need to build a system that will allow for different layouts
     //and set them accordingly. Probably read the parent of all waiting positions and save different but disabled
@@ -99,10 +100,11 @@ public class ReceptionManager : MonoBehaviour
             newCustomer.GetComponent<Customer>().reason = Random.Range(1, 11);
             newCustomer.GetComponent<Customer>().kindness = Random.Range(1, 11);
 
+            newCustomer.GetComponent<ClickableNPC>().NPCCard = customerCard;
+
             //nav to queue position
             newCustomer.GetComponent<Navigation>().SetDestination(emptySpace);
             emptySpace.UpdatePos(newCustomer);
-
         }
         else
             Debug.Log("Queue full");
