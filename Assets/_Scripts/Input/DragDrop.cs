@@ -91,6 +91,7 @@ public class DragDrop : MonoBehaviour
             {
                 drop.DropNPC(clickedObject, isCustomer);
             }
+            //TODO why is invalid drop location not called here?
         }
     }
     private void InvalidDropLocation(GameObject clickedObject)

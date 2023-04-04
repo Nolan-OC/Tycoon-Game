@@ -5,11 +5,13 @@ using UnityEngine;
 public class ReceptionManager : MonoBehaviour
 {
     [Header("Receptionist")]
-    [SerializeField]private WaitingRoomPos rPos;
+    [SerializeField] private WaitingRoomPos rPos;
 
     [Header("Queue Info")]
-    public List<QueuePos> queuePositions;
-    public List<QueuePos> waitingRoomPositions;
+    public Transform queuePosParent;
+    public Transform waitingPosParent;
+    [SerializeField] private List<QueuePos> queuePositions;
+    [SerializeField] private List<QueuePos> waitingRoomPositions;
 
     [Header ("Customer Creation")]
     public GameObject pCustomer;
@@ -21,6 +23,11 @@ public class ReceptionManager : MonoBehaviour
     //parents with new layouts/more chairs. Then just activate/deactivate on upgrades.
     private void Start()
     {
+        foreach(Transform child in queuePosParent.transform)
+            queuePositions.Add(child.GetComponent<QueuePos>());
+        foreach (Transform child in waitingPosParent.transform)
+            waitingRoomPositions.Add(child.GetComponent<QueuePos>());
+
         StartCoroutine(MoveQueueTimer());
         NewCustomer();
     }

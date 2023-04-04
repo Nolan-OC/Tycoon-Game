@@ -28,6 +28,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     private BattlePos EPos, CPos;
     public MovementPosBase customerExitPos;
+    public MovementPosBase employeeExitPos; //where defeated npc's go on defeat
     
     //TODO QOL make so you can drop any npc anywhere on gameobject and it will properly place them
     public void Start()
@@ -35,6 +36,8 @@ public class BattleManager : MonoBehaviour
         StartBattle();
         if (customerExitPos == null)
             Debug.LogError("ERROR BATTLE HAS NO EXIT POS FOR DEFEATED CUSTOMERS");
+        if (employeeExitPos == null)
+            Debug.LogError("ERROR BATTLE HAS NO EXIT POS FOR DEFEATED EMPLOYEES");
     }
 
     public void StartBattle()
@@ -93,7 +96,7 @@ public class BattleManager : MonoBehaviour
             //calculate optimal attack style, and damage
             DamageType optimalAttack = CalculateOptimalAttack(customer, employee);
             float optimalDamage = CalculateOptimalDamage(optimalAttack, customer, employee);
-            Debug.Log("CUSTOMER OPTIMAL: Attacking with = " + optimalAttack);
+            //Debug.Log("CUSTOMER OPTIMAL: Attacking with = " + optimalAttack);
             //send damageType and damage float to target NPC_COMBAT
             employee.TakeDamage(optimalDamage);
         }
@@ -102,7 +105,7 @@ public class BattleManager : MonoBehaviour
             //choose random attack
             int attackRoll = Random.Range(0, 2);
             float blunderDamage = CalculateOptimalDamage((DamageType)attackRoll, customer, employee);
-            Debug.Log("CUSTOMER BLUNDER: Attacking with " + (DamageType)attackRoll);
+            //Debug.Log("CUSTOMER BLUNDER: Attacking with " + (DamageType)attackRoll);
             employee.TakeDamage(blunderDamage);
         }
 
@@ -111,7 +114,9 @@ public class BattleManager : MonoBehaviour
         else
         {
             currentState = State.defeat;
+            //
             //TODO change state back to idle at some point
+            employee.GetComponent<Navigation>().SetDestination(employeeExitPos);
         }
     }
     public void PauseBattle()

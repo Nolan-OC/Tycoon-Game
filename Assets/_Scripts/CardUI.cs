@@ -11,8 +11,8 @@ public class CardUI : MonoBehaviour
         building = buildObj.GetComponent<ClickableBuilding>();
 
         transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = buildObj.gameObject.name;
-        transform.GetChild(1).gameObject.GetComponent<TMP_Text>().text = buildObj.GetComponent<BuildingStats>().level.ToString();
-        transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Cost: " + buildObj.GetComponent<BuildingStats>().upgCost.ToString();
+        transform.GetChild(1).gameObject.GetComponent<TMP_Text>().text = buildObj.GetComponent<BuildingStatsBase>().level.ToString();
+        transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "Cost: " + buildObj.GetComponent<BuildingStatsBase>().upgCost.ToString();
     }
     public void CloseCard()
     {
