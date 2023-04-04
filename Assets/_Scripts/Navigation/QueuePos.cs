@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class QueuePos : MovementPosBase
 {
+    private void Start()
+    {
 
+    }
 }

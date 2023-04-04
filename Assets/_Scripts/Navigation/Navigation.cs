@@ -47,8 +47,6 @@ public class Navigation : MonoBehaviour
             transform.LookAt(destination.npcFaceDir);
             animator.Play(destination.npcAnimation);
         }
-        else
-            Debug.Log("no npcFaceDir");
         // play the objects animation (queue pos is a standing anim, waiting room sitting, combat will be standing, and overriden when taking damage)
     }
 }

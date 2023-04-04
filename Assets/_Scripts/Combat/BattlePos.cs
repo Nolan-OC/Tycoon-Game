@@ -31,5 +31,15 @@ public class BattlePos : MovementPosBase
         parentManager.StartBattle();
     }
 
+    public override void ClearPos(GameObject npc)
+    {
+        if (npcCount > 0)
+        {
+            isFull = false;
+            currentNPC = null;
+            npcCount--;
+        }
+        parentManager.PauseBattle();
+    }
 
 }

@@ -10,7 +10,7 @@ public class ClickableNPC : ClickableBase
 
     public override void Clicked()
     {
-        Debug.Log("Clicked "+ name);
+        NPCCard.SetActive(true);
     }
 
     private void DisplayStats()
